@@ -1,0 +1,41 @@
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: max-content;
+  height: max-content;
+  direction: ltr;
+  align-items: center;
+}
+
+.container * {
+  font-variation-settings: 'wdth' 100, 'wght' 650, 'DOTS' 0;
+  font-size: 18px;
+  letter-spacing: -0.4px;
+}
+
+.clock {
+  display: block;
+  text-align: right;
+  width: max-content;
+  height: max-content;
+}
+
+.date {
+  display: block;
+}
+
+.valueStyle {
+  color: #141228;
+}
+
+.leadingZero {
+  color: rgba(19, 17, 39, 0.2);
+}
+
+.spliteLine {
+  margin: 0 5px;
+  position: relative;
+  /* top: 20px; */
+  height: max-content;
+}

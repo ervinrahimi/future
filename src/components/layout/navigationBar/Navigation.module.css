@@ -1,0 +1,129 @@
+.container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: max-content;
+  transform: translateX(-50%);
+  display: flex;
+  z-index: 0;
+  top: 24px;
+  align-items: normal;
+}
+
+.sliderContainer {
+  position: relative;
+  width: 305px;
+  overflow: scroll;
+  display: flex;
+  padding-left: 11px;
+}
+
+.sliderContainer:first-child {
+  padding-left: unset;
+  padding-left: 14px;
+}
+
+.dots:first-child {
+  position: absolute;
+  top: 22px;
+  right: 0;
+}
+
+.dots {
+  position: absolute;
+  top: 22px;
+  left: 0;
+}
+
+/* .rtl {
+  direction: rtl;
+} */
+
+.embla {
+  overflow: hidden;
+}
+.emblaContainer {
+  display: flex;
+  /* display: grid; */
+  /* grid-auto-flow: column; */
+  /* grid-auto-columns: 30%; */
+  /* Each slide covers 80% of the viewport */
+  position: relative;
+}
+.emblaSlide {
+  flex: 0 0 58px;
+  /* flex: 0 0 50%; */
+  /* flex: 0 0 15.3%; */
+  /* width: 50px; */
+  min-width: 0;
+  height: 80px;
+  /* background: #ff00001f; */
+  border-radius: 10px;
+  display: flex;
+  position: relative;
+  margin-right: 2.5px;
+}
+
+.embla__slide:last-child {
+  margin-right: 0;
+}
+
+.emblaSlide a img {
+  border: 2px solid #00383a;
+}
+
+.emblaSlide a,
+.emblaSlide a img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 38px;
+  height: 42px;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+.emblaSlide span {
+  position: absolute;
+  width: 100%;
+  height: max-content;
+  bottom: 4px;
+  left: 0;
+  font-size: 11.2px;
+  font-variation-settings: 'wdth' 100, 'wght' 700, 'DOTS' 1, 'CNTR' 40;
+  line-height: 1.2;
+}
+
+.selectedItem {
+  position: relative;
+  width: 305px;
+  height: 52px;
+  justify-content: center;
+  display: flex;
+}
+
+.selectedItemContent {
+  mask: url(../../../../public/desktop/masks/navigation-selected-item.svg);
+  mask-size: 100%;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  top: -5px;
+  position: relative;
+}
+.selectedItemContent img {
+  filter: invert();
+  width: 54px;
+  height: 54px;
+}
+
+.selectedFrame {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: invert(1);
+}
+
+.selectedFrame path {
+  fill: none;
+}

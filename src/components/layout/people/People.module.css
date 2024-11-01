@@ -1,0 +1,22 @@
+.container {
+  position: absolute;
+  width: max-content;
+  height: max-content;
+  top: 190px;
+  right: 26px;
+  display: flex;
+}
+
+.addFriend {
+  width: 35px;
+  height: 20px;
+  border-radius: 100px;
+  background-color: #9c9c9c;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  position: relative;
+  flex-flow: column;
+  line-height: 1.2;
+  color: white;
+}

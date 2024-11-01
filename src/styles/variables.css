@@ -1,0 +1,8 @@
+* {
+  font-family: var(--font-yekanBakh), sans-serif;
+  font-variation-settings: 'wdth' 100, 'wght' 400, 'DOTS' 1, 'CNTR' 40;
+}
+button {
+  font-family: var(--font-yekanBakh), sans-serif;
+  font-variation-settings: 'wdth' 100, 'wght' 600, 'DOTS' 1, 'CNTR' 40;
+}

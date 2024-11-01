@@ -1,0 +1,30 @@
+.page {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.figma {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(../../../../../public/figma/desktop.jpg);
+  background-size: 100%;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  z-index: -2;
+  /* display: none; */
+}
+
+.music {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  width: 200px;
+  height: 200px;
+  background: red;
+}

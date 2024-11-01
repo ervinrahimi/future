@@ -1,0 +1,104 @@
+:root {
+  --font-yekanBakh: var(--font-yekanBakh);
+  --font-kahroba: var(--font-kahroba);
+  --font-cairo: var(--font-neustadt);
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  direction: ltr;
+  /* direction: rtl; */
+  /* cursor: none; */
+}
+
+body {
+  font-family: var(--font-yekanBakh), sans-serif;
+  font-variation-settings: 'wdth' 100, 'wght' 800, 'DOTS' 1, 'CNTR' 40;
+  color: black;
+  background: #f8f9fa;
+}
+
+/* 'wght' 400,   Weight: تنظیم وزن */
+/* 'wdth' 100,   Width: تنظیم عرض */
+/* 'ital' 0,     Italic: حالت ایتالیک */
+/* 'slnt' 0,     Slant: تنظیم شیب فونت */
+/* 'opsz' 16,    Optical Size: تنظیم اندازه اپتیکال */
+/* 'GRAD' 50,    Gradient: تنظیم گرادینت */
+/* 'XTRA' 500,   Width Axis: تنظیم عرض اضافی */
+/* 'XOPQ' 120,   Opacity Axis: تنظیم شفافیت */
+/* 'YOPQ' 80,    Y Opacity Axis: تنظیم شفافیت در محور Y */
+/* 'YTLC' 512,   Lowercase Top Axis: تنظیم حروف کوچک */
+/* 'YTUC' 540,   Uppercase Top Axis: تنظیم حروف بزرگ */
+/* 'YTAS' 750,   Ascender Axis: تنظیم ارتفاع صعودی */
+/* 'YTDE' -250,  Descender Axis: تنظیم ارتفاع نزولی */
+/* 'YTFI' 500;   Figure Axis: تنظیم ارقام */
+
+* {
+  cursor: url("../../public/cursors/main-cursor.png"), auto;
+
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-user-drag: none; /* برای مرورگرهای وب‌کیت */
+  user-drag: none;
+  user-select: none; /* غیرفعال کردن انتخاب متن */
+  transition: all 0.2s ease-out;
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+  ::-webkit-scrollbar {
+    width: 0px; /* عرض اسکرول‌بار */
+    height: 0px; /* ارتفاع اسکرول‌بار برای حالت اسکرول افقی */
+  }
+
+  * p {
+    -webkit-user-drag: auto; /* برای مرورگرهای وب‌کیت */
+    user-drag: auto;
+    user-select: auto; /* غیرفعال کردن انتخاب متن */
+  }
+
+  /* استایل‌دهی به پس‌زمینه اسکرول‌بار */
+  ::-webkit-scrollbar-track {
+    background: none; /* رنگ پس‌زمینه */
+    border-radius: 0px; /* گرد کردن گوشه‌ها */
+  }
+
+  /* استایل‌دهی به خود دستگیره اسکرول‌بار */
+  ::-webkit-scrollbar-thumb {
+    background: none; /* رنگ دستگیره */
+    border-radius: 0; /* گرد کردن گوشه‌ها */
+  }
+
+  /* استایل‌دهی به دستگیره اسکرول‌بار هنگام هاور */
+  ::-webkit-scrollbar-thumb:hover {
+    background: none; /* تغییر رنگ دستگیره هنگام هاور */
+  }
+
+  /* استایل‌دهی به گوشه‌های اسکرول‌بار */
+  ::-webkit-scrollbar-corner {
+    background: none; /* رنگ گوشه‌های اسکرول‌بار */
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-kahroba);
+  font-variation-settings: 'wdth' 100, 'wght' 400, 'DOTS' 1;
+}
+
+.toaster {
+  border: none !important;
+  padding: 20px !important;
+  color: rgb(255, 255, 255) !important;
+  background: rgba(21, 22, 29, 0.6) !important;
+  font-variation-settings: 'wdth' 98, 'wght' 400, 'DOTS' 1;
+  backdrop-filter: blur(10px);
+  font-size: 14px;
+  border-radius: 10px !important;
+}
