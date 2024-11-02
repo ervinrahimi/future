@@ -5,6 +5,7 @@ import CustomCursor from '@/components/cursors/CustomCursor'
 import { jakarta, jakartaItalic, kahroba, nuestadt, yekanBakh } from '@/fonts/fonts'
 import Desktop from './desktop/[desktopId]/page'
 import LoadingPage from './loading/page'
+import MainLoader from '@/components/loaders/MainLoader'
 
 
 
@@ -23,7 +24,8 @@ export default function RootLayout({ children }) {
         <Desktop />
         {children}
         <CustomCursor />
-        <LoadingPage />
+        {/* <LoadingPage /> */}
+        <MainLoader />
       </body>
     </html>
   )

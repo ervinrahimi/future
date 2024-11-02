@@ -1,15 +1,10 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styles from './page.module.css';
 import Image from 'next/image';
+import ReactPlayer from 'react-player';
 
 export default function LoadingPage() {
-  const [videoLoaded, setVideoLoaded] = useState(false);
-
-  const handleVideoLoad = () => {
-    setVideoLoaded(true);
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -21,19 +16,14 @@ export default function LoadingPage() {
         />
       </div>
       <div className={styles.videoContainer}>
-        <video
-          autoPlay
+        <ReactPlayer
+          url="/medias/videos/galaxy.mp4"
+          playing
           loop
           muted
           className={styles.backgroundVideo}
-          onCanPlayThrough={handleVideoLoad}
-          style={{ display: videoLoaded ? 'block' : 'none' }}
-        >
-          <source src={`/medias/videos/galaxy.mp4?cacheBust=${Date.now()}`} type="video/mp4" />
-          مرورگر شما از ویدیو پشتیبانی نمی‌کند.
-        </video>
+        />
       </div>
-      {!videoLoaded && <div className={styles.loadingText}>در حال بارگذاری...</div>}
     </div>
   );
 }
