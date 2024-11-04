@@ -1,0 +1,33 @@
+.gridContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gridCell {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  transition: background-color 0.2s ease;
+}
+
+.gridItem {
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #ddd;
+  cursor: grab;
+  font-weight: bold;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  /* برای انیمیشن نرمی که آیتم‌ها به مکان جدید حرکت کنند */
+}
+
+.dragging {
+  opacity: 0.8;
+  transform: scale(1.1); /* آیتم کمی بزرگ‌تر و قابل تشخیص می‌شود */
+  z-index: 1000; /* آیتم روی بقیه آیتم‌ها قرار می‌گیرد */
+}

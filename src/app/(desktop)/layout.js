@@ -1,13 +1,16 @@
 import '../../styles/global.css'
 import '../../styles/variables.css'
 
-import CustomCursor from '@/components/cursors/CustomCursor'
 import { jakarta, jakartaItalic, kahroba, nuestadt, yekanBakh } from '@/fonts/fonts'
-import Desktop from './desktop/[desktopId]/page'
 import LoadingPage from './loading/page'
 import MainLoader from '@/components/loaders/MainLoader'
+import { CursorProvider } from '@/components/cursors/CursorContext'
+import CustomCursor from '@/components/cursors/CustomCursor'
+import Desktop from '@/components/layout/desktop/Desktop'
 
-
+import { ToastContainer, Slide, Zoom, Flip, Bounce } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import CustomTransition from '@/components/layout/notificationBox/CustomTransition' // ایمپورت ترنزیشن سفارشی
 
 export const metadata = {
   title: 'Create Next App',
@@ -17,15 +20,38 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
       <body
-        className={`${kahroba.variable} ${yekanBakh.variable} ${jakarta.cairo} ${jakartaItalic.cairo} ${nuestadt}`}
+        className={`${kahroba.variable} ${yekanBakh.variable} ${jakarta.variable} ${jakartaItalic.variable} ${nuestadt.variable}`}
       >
-        <Desktop />
-        {children}
-        <CustomCursor />
-        {/* <LoadingPage /> */}
-        <MainLoader />
+        <CursorProvider>
+          <CustomCursor canUse={true} />
+          <Desktop />
+          {children}
+          {/* کامپوننت Desktop باید در مسیر app/desktop/[desktopId]/page.js فراخوانی شود */}
+          <ToastContainer
+            position="bottom-left"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={true}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            limit={3}
+            // transition={CustomTransition}
+            transition={Zoom}
+            draggablePercent={80}
+            className="toast"
+            toastClassName="toast2"
+            bodyClassName="toast3"
+            closeButton={false}
+
+            // stacked
+          />
+          {/* <LoadingPage /> */}
+          <MainLoader />
+        </CursorProvider>
       </body>
     </html>
   )

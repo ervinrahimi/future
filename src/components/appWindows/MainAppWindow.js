@@ -19,8 +19,9 @@ export default function MainAppWindow() {
         opacity: 1, 
         scale: 1, 
         y: 0, // بازگشت به مکان اصلی
-        duration: 0.2, 
-        ease: "none" // اضافه کردن easing برای حس نرم‌تر
+        delay: 0.35,
+        duration: 0.58, 
+        ease: "back.out" // اضافه کردن easing برای حس نرم‌تر
       }
     );
   }, []); // فقط یک بار در زمان بارگذاری صفحه اجرا می‌شود

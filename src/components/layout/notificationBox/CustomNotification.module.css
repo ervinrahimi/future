@@ -1,0 +1,75 @@
+/* CustomNotification.module.css */
+
+/* انیمیشن ورود */
+@keyframes customToastIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* انیمیشن خروج */
+@keyframes customToastOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* کلاس‌های ترنزیشن سفارشی برای Toastify */
+.custom-toast-enter {
+  animation: customToastIn 0.5s forwards;
+}
+
+.custom-toast-exit {
+  animation: customToastOut 0.5s forwards;
+}
+
+/* استایل کانتینر نوتیفیکیشن */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+
+  position: relative;
+  width: 114px;
+  height: 270px;
+
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(0px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 30px;
+  width: 297px;
+  height: 261px;
+}
+
+
+
+/* استایل عنوان */
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+/* استایل پیام */
+.message {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0 15px;
+  text-align: center;
+}

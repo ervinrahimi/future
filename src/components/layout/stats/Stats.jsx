@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './Stats.module.css'
-// import useEmblaCarousel from 'embla-carousel-react'
 import {
   SampleIcon
 } from '@/assets/icons/main/statsBar'

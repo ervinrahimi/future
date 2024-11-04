@@ -3,30 +3,10 @@ import React from 'react'
 import { useCallback } from 'react'
 
 import styles from './Navigation.module.css'
-import useEmblaCarousel from 'embla-carousel-react'
 import Image from 'next/image'
 import { NavigationSelectedItem, NavigationDots } from '@/assets/icons/main/navigationBar'
 import Link from 'next/link'
 export const Navigation = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel()
-  const [emblaRef2, emblaApi2] = useEmblaCarousel()
-
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev()
-  }, [emblaApi])
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext()
-  }, [emblaApi])
-
-  const scrollPrev2 = useCallback(() => {
-    if (emblaApi2) emblaApi2.scrollPrev()
-  }, [emblaApi2])
-
-  const scrollNext2 = useCallback(() => {
-    if (emblaApi2) emblaApi2.scrollNext()
-  }, [emblaApi2])
-
   return (
     <div className={styles.container}>
       <div className={`${styles.sliderContainer} ${styles.rtl}`}>
@@ -215,23 +195,13 @@ export const Navigation = () => {
             </div>
             <div className={styles.emblaSlide}>
               <Link href="#">
-                <Image
-                  src={'/buildings/soltani-zade/it.jpg'}
-                  width={200}
-                  height={200}
-                  alt="null"
-                />
+                <Image src={'/buildings/soltani-zade/it.jpg'} width={200} height={200} alt="null" />
               </Link>
               <span>حقوقی</span>
             </div>
             <div className={styles.emblaSlide}>
               <Link href="#">
-                <Image
-                  src={'/buildings/soltani-zade/it.jpg'}
-                  width={200}
-                  height={200}
-                  alt="null"
-                />
+                <Image src={'/buildings/soltani-zade/it.jpg'} width={200} height={200} alt="null" />
               </Link>
               <span>فناوری و اطلاعات</span>
             </div>

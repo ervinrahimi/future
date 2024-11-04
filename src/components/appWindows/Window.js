@@ -15,7 +15,11 @@ import InMenuNetworkIcon from '@/assets/icons/nodes/nodesInMenu'
 
 import BigSlider from '../ui/slider/BigSlider'
 
+// MyButton.js
+import useHoverCursor from '@/components/cursors/useHoverCursor'
+
 export default function Window() {
+  const { handleMouseEnter, handleMouseLeave } = useHoverCursor('cross', 500)
   const pathname = usePathname()
 
   // ساختار داده‌های منو
@@ -178,7 +182,7 @@ export default function Window() {
         <RightSideBar className={styles.mainSideLine} />
         <LeftSmallSideBar className={styles.sideLine} />
 
-        <ul>
+        <ul onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           {menus.map((menu, index) => {
             const isMenuActive = pathname === menu.slug
 
@@ -190,7 +194,7 @@ export default function Window() {
                   </div>
                   <Link
                     className={`${styles.menuTitle} ${isMenuActive ? styles.activeMenuTitle : ''}`}
-                    href={"#"}
+                    href={'#'}
                     // href={menu.slug}
                   >
                     {menu.title}
@@ -209,7 +213,7 @@ export default function Window() {
                             isSubMenuActive ? styles.activeSubMenuTitle : ''
                           }`}
                           // href={subMenu.slug}
-                          href={"#"}
+                          href={'#'}
                         >
                           {subMenu.title}
                         </Link>
@@ -243,7 +247,7 @@ export default function Window() {
                   </div>
                   <Link
                     className={`${styles.menuTitle} ${isMenuActive ? styles.activeMenuTitle : ''}`}
-                    href={"#"}
+                    href={'#'}
                     // href={menu.slug}
                   >
                     {menu.title}
@@ -261,7 +265,7 @@ export default function Window() {
                           className={`${styles.subMenuTitle} ${
                             isSubMenuActive ? styles.activeSubMenuTitle : ''
                           }`}
-                          href={"#"}
+                          href={'#'}
                           // href={subMenu.slug}
                         >
                           {subMenu.title}

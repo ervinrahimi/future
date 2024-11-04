@@ -1,123 +1,70 @@
-'use client'
+// CustomCursor.jsx
+'use client';
 
-import { useEffect, useRef } from 'react'
-import styles from './CustomCursor.module.css'
-import { usePathname } from 'next/navigation'
-const CustomCursor = ({ canUse }) => {
-  const pathname = usePathname() // گرفتن مسیر فعلی
+import { useEffect, useState } from 'react';
+import styles from './CustomCursor.module.css';
+import { useCursor } from './CursorContext';
 
-  let isHomePage = pathname === '/' // بررسی اینکه آیا در صفحه اصلی هستیم یا خیر
-  if (canUse == true) {
-    isHomePage = true
-  }
-  const cursorImmediateRef = useRef(null)
-  const cursorSmoothRef = useRef(null)
-
-  const mouseX = useRef(0)
-  const mouseY = useRef(0)
-
-  const immediateX = useRef(0)
-  const immediateY = useRef(0)
-
-  const smoothX = useRef(0)
-  const smoothY = useRef(0)
-
-  const cursorSize = 15
+const CustomCursor = ({ followSpeed = 0.03 }) => {
+  const { cursorType } = useCursor();
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [visibleCursor, setVisibleCursor] = useState(cursorType);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isVisible, setIsVisible] = useState(true); // برای مدیریت نمایش ماوس هنگام خروج از پنجره
 
   useEffect(() => {
+    let mouseX = 0, mouseY = 0;
+
     const handleMouseMove = (event) => {
-      mouseX.current = event.clientX - cursorSize / 2
-      mouseY.current = event.clientY - cursorSize / 2
-    }
+      mouseX = event.clientX;
+      mouseY = event.clientY;
+    };
 
-    window.addEventListener('mousemove', handleMouseMove)
+    const handleMouseLeave = () => setIsVisible(false); // مخفی کردن ماوس هنگام خروج از پنجره
+    const handleMouseEnter = () => setIsVisible(true); // نمایش ماوس هنگام ورود به پنجره
 
-    const updateImmediateCursor = () => {
-      immediateX.current = mouseX.current
-      immediateY.current = mouseY.current
+    window.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('mouseenter', handleMouseEnter);
 
-      if (cursorImmediateRef.current) {
-        cursorImmediateRef.current.style.transform = `translate3d(${immediateX.current}px, ${immediateY.current}px, 0)`
-      }
-      requestAnimationFrame(updateImmediateCursor)
-    }
+    const animate = () => {
+      setPosition((prevPos) => {
+        const newX = prevPos.x + (mouseX - prevPos.x - 8.4) * followSpeed ;
+        const newY = prevPos.y + (mouseY - prevPos.y - 8.4) * followSpeed;
+        return { x: newX, y: newY };
+      });
+      requestAnimationFrame(animate);
+    };
 
-    const updateSmoothCursor = () => {
-      const speed = 0.4
-
-      smoothX.current += (mouseX.current - smoothX.current) * speed
-      smoothY.current += (mouseY.current - smoothY.current) * speed
-
-      if (cursorSmoothRef.current) {
-        cursorSmoothRef.current.style.transform = `translate3d(${smoothX.current}px, ${smoothY.current}px, 0)`
-      }
-      requestAnimationFrame(updateSmoothCursor)
-    }
-
-    updateImmediateCursor()
-    updateSmoothCursor()
+    animate();
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
-    }
-  }, [])
+      window.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('mouseenter', handleMouseEnter);
+    };
+  }, [followSpeed]);
 
-  const cursorStyle = {
-    position: 'fixed',
-    top: '0',
-    left: '0',
-    width: `${cursorSize}px`,
-    height: `${cursorSize}px`,
-    // pointerEvents: 'none',
-    willChange: 'transform',
-    zIndex: '0',
-  }
+  // مدیریت تغییر نرم بین ماوس‌ها
+  useEffect(() => {
+    if (cursorType !== visibleCursor) {
+      setIsTransitioning(true);
+
+      const timeout = setTimeout(() => {
+        setVisibleCursor(cursorType);
+        setIsTransitioning(false);
+      }, 300);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [cursorType, visibleCursor]);
 
   return (
-    <>
-      {/* دایره با حرکت سفت */}
-      {/* <svg
-        ref={cursorImmediateRef}
-        width={cursorSize}
-        height={cursorSize}
-        style={{
-          ...cursorStyle,
-        }}
-      >
-        <circle
-          cx={cursorSize / 2}
-          cy={cursorSize / 2}
-          r={(cursorSize - 2) / 2}
-          stroke="red" // رنگ قرمز برای تمایز
-          strokeWidth="2"
-          fill="none"
-        />
-      </svg> */}
-      {/* دایره با حرکت نرم */}
-      {isHomePage && (
-        <div className={styles.positionC}>
-          <svg
-            ref={cursorSmoothRef}
-            width={cursorSize}
-            height={cursorSize}
-            style={{
-              ...cursorStyle,
-            }}
-          >
-            <circle
-              cx={cursorSize / 2}
-              cy={cursorSize / 2}
-              r={(cursorSize - 2) / 2}
-              stroke="black" // رنگ آبی برای تمایز
-              strokeWidth="1.2"
-              fill="none"
-            />
-          </svg>
-        </div>
-      )}{' '}
-      {/* نمایش کاستوم کرسر فقط در صفحه اصلی */}
-    </>
-  )
-}
+    <div
+      className={`${styles.cursor} ${styles[visibleCursor]} ${isVisible ? (isTransitioning ? styles.fadeOut : styles.fadeIn) : styles.fadeOut}`}
+      style={{ top: `${position.y}px`, left: `${position.x}px` }}
+    />
+  );
+};
 
-export default CustomCursor
+export default CustomCursor;
