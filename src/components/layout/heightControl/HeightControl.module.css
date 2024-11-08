@@ -5,8 +5,9 @@
   display: flex;
   flex-wrap: wrap;
   width: 90px;
-  z-index: 9999;
+  z-index: 998;
   direction: ltr;
+  pointer-events: all;
 }
 
 .button {

@@ -7,7 +7,7 @@ export default function AppBackground() {
   const router = useRouter()
   // تابع هندل کلیک برای هدایت به صفحه اصلی
   const handleClick = () => {
-    router.push('/')
+    router.push('/', {scroll: false})
   }
   const { handleMouseEnter, handleMouseLeave, handleMouseClick } = useHoverCursor('back', 200)
   return (

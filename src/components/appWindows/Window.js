@@ -20,6 +20,7 @@ import useHoverCursor from '@/components/cursors/useHoverCursor'
 
 export default function Window() {
   const { handleMouseEnter, handleMouseLeave } = useHoverCursor('cross', 500)
+  const { handleMouseEnter2, handleMouseLeave2 } = useHoverCursor('default', 500)
   const pathname = usePathname()
 
   // ساختار داده‌های منو
@@ -227,7 +228,11 @@ export default function Window() {
         </ul>
       </div>
 
-      <div className={styles.content}>
+      <div
+        className={styles.content}
+        onMouseEnter={handleMouseEnter2}
+        onMouseLeave={handleMouseEnter2}
+      >
         <BigSlider />
       </div>
 

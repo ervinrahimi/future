@@ -4,6 +4,8 @@
   left: 26px;
   width: max-content;
   height: max-content;
+  z-index: 2;
+  pointer-events: all;
 }
 
 .statsContainer {

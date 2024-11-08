@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import styles from './TaskBar.module.css'
 import { SampleIcon } from '@/assets/icons/main/statsBar'

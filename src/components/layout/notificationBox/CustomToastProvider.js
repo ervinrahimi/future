@@ -1,3 +1,4 @@
+"use client"
 // components/CustomToastProvider.js
 import React, { createContext, useContext, useState } from 'react';
 import CustomNotification from './CustomNotification'; // کامپوننت نوتیفیکیشن سفارشی

@@ -5,6 +5,7 @@
   top: 190px;
   right: 26px;
   display: flex;
+  pointer-events: all;
 }
 
 .addFriend {
