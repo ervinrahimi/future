@@ -2,7 +2,6 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 import WindowControlButtons from '@/components/layout/windowControl/WindowControlButton'
-import { Navigation } from '@/components/layout/navigationBar/NavigationBar'
 import HeightControl from '@/components/layout/heightControl/HeightControl'
 import Stats from '@/components/layout/stats/Stats'
 import People from '@/components/layout/people/People'
@@ -12,6 +11,7 @@ import { NodeDesktopContainer, AppDesktopIcon } from '@/assets/svgs/appDesktop/a
 import GridComponent from '@/components/appIcons/AppsGrid'
 
 import { useNotification } from '@/components/layout/notificationBox/NotificationContext'
+import NavigationBar from '@/components/layout/navigationBar/NavigationBar'
 
 export default function Desktop() {
   const handleClick = () => {

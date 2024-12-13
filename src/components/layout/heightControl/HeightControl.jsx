@@ -7,14 +7,15 @@ import {
   WindowControlLightModeButton,
   WindowControlSettingButton,
 } from '@/assets/icons/main/mainWindowControl'
+import { HeightControlEarthButton, HeightControlGalaxyButton, HeightControlHomeButton, HeightControlLandButton } from '@/assets/icons/main/mainheightControl'
 
 export default function HeightControl() {
   return (
     <div className={styles.buttonsContainer}>
-      <WindowControlCloseButton className={styles.button} roll={'hi'} />
-      <WindowControlLightModeButton className={styles.button} roll={'hi'} />
-      <WindowControlCopyLinkButton className={styles.button} roll={'hi'} />
-      <WindowControlSettingButton className={styles.button} roll={'hi'} />
+      <HeightControlHomeButton className={styles.button} roll={'hi'} />
+      <HeightControlLandButton className={styles.button} roll={'hi'} />
+      <HeightControlEarthButton className={styles.button} roll={'hi'} />
+      <HeightControlGalaxyButton className={styles.button} roll={'hi'} />
     </div>
   )
 }

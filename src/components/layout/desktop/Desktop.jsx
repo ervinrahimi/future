@@ -1,11 +1,11 @@
 'use client'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Image from 'next/image'
 import styles from './Desktop.module.css'
 import WindowControlButtons from '@/components/layout/windowControl/WindowControlButton'
-import { Navigation } from '@/components/layout/navigationBar/NavigationBar'
+import { Navigation } from '@/components/layout/navigationBar/backup/NavigationBar2'
 import HeightControl from '@/components/layout/heightControl/HeightControl'
 import Stats from '@/components/layout/stats/Stats'
 import People from '@/components/layout/people/People'
@@ -15,12 +15,19 @@ import { NodeDesktopContainer, AppDesktopIcon } from '@/assets/svgs/appDesktop/a
 import GridComponent from '@/components/appIcons/AppsGrid'
 import { toast } from 'react-toastify'
 import CustomNotification from '../notificationBox/CustomNotification'
+import useScrollToTopOnRouteChange from '@/utils/scrollToTop/ScrollToTop'
+import Departments from '@/components/departments/Departments'
+import DesktopBackground from '../background/DesktopBackground'
+import NavigationBar from '../navigationBar/NavigationBar'
+import { Rideman1, Rideman2 } from '@/assets/svgs/rideman/rideman'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Desktop() {
+  // useScrollToTopOnRouteChange()
   const appOnDesktopRef = useRef(null)
   const desktopRef = useRef(null)
+  const departmentRef = useRef(null)
 
   const showCustomToast = () => {
     toast(<CustomNotification title="نوتیفیکیشن" message="این یک پیام ساده است." />, {
@@ -30,60 +37,103 @@ export default function Desktop() {
     })
   }
 
-  // انواع ease ها:
-
-  // قدرتی (Power) - تنظیم شدت حرکت در شروع و پایان انیمیشن
-  // "power1.in"       // انیمیشن به آرامی شروع می‌شود و به تدریج سرعت می‌گیرد
-  // "power1.out"      // انیمیشن سریع شروع می‌شود و به تدریج کاهش سرعت می‌دهد
-  // "power1.inOut"    // ترکیبی از هر دو حالت بالا، نرم و روان
-
-  // "power2.in"       // مشابه power1 اما کمی شدیدتر
-  // "power2.out"      // پایان آرام با شروع تندتر
-  // "power2.inOut"    // حرکتی ملایم‌تر نسبت به power1 برای شروع و پایان
-
-  // "power3.in"       // انیمیشن با قدرت بیشتری در شروع حرکت می‌کند
-  // "power3.out"      // با سرعت بالا شروع و به تدریج کاهش می‌یابد
-  // "power3.inOut"    // پیشنهاد شده برای انیمیشن‌های متعادل و طبیعی
-
-  // "power4.in"       // شروعی بسیار آرام و افزایش تدریجی سرعت
-  // "power4.out"      // پایان خیلی نرم با سرعت کاهش یافته
-  // "power4.inOut"    // قدرت بالا برای انیمیشن‌های قوی و واضح
-
-  // بازگشت‌دار (Back) - مناسب برای حرکاتی که اندکی بازگشت دارند
-  // "back.in"         // با اندکی بازگشت در ابتدا، سپس سرعت گرفتن
-  // "back.out"        // با اندکی بازگشت در انتها
-  // "back.inOut"      // بازگشت در شروع و پایان
-
-  // ارتجاعی (Elastic) - حرکات ارتجاعی و جهشی
-  // "elastic.in"      // انیمیشن با حالت ارتجاعی و جهش به جلو شروع می‌شود
-  // "elastic.out"     // به آرامی به جایگاه نهایی باز می‌گردد
-  // "elastic.inOut"   // با ارتعاش و بازگشت در ابتدا و انتها
-
-  // پرشی (Bounce) - مناسب برای حرکات پرشی و طبیعی
-  // "bounce.in"       // شروع پرشی و پرانرژی
-  // "bounce.out"      // پایان با حالت پرشی و طبیعی
-  // "bounce.inOut"    // پرش در ابتدا و انتها، شبیه حرکات واقعی
-
-  // خطی (Linear) - بدون هیچ تغییری در سرعت
-  // "linear"          // حرکت کاملاً خطی و یکنواخت، بدون شتاب یا کاهش سرعت
+  // start: 'top 0%',
+  //         end: 'bottom 100%',
 
   useEffect(() => {
     if (appOnDesktopRef.current) {
+      // انیمیشن اول با اسکرول
       gsap.to(appOnDesktopRef.current, {
-        duration: 1,
-        x: 200,
-        ease: 'power3.out', // نوع ease برای روان کردن انیمیشن
+        duration: 0.3,
+        scale: 0.7,
+        opacity: 1,
+        ease: 'power3.in',
         scrollTrigger: {
           trigger: desktopRef.current,
-          // start: 'top+=500 top',
-          // end: '+=500',
-          start: 'top 0%',
-          end: 'bottom 100%',
-          scrub: 0.5,
-          markers: true, // نمایش نوارهای کمکی اسکرول
-          // toggleActions: 'play none none reverse',
+          start: '0',
+          end: '1000px',
+          scrub: 0.1,
+          markers: { startColor: 'blue', endColor: 'blue', fontSize: '12px' },
         },
       })
+
+      // اضافه کردن یک مقدار تاخیری کوچک برای رفع پرش
+      gsap.to(appOnDesktopRef.current, {
+        duration: 0.1, // مدت زمان کوتاه برای انتقال نرم‌تر
+        scale: 0.7, // شروع انیمیشن دوم از همان مقیاس نهایی انیمیشن اول
+        opacity: 1,
+        scrollTrigger: {
+          trigger: desktopRef.current,
+          start: '1000px',
+          onEnter: () => {
+            // انیمیشن دوم پس از رسیدن به نقطه تعریف شده
+            gsap.to(appOnDesktopRef.current, {
+              duration: 0.15,
+              scale: 0.5,
+              opacity: 0,
+              ease: 'power3.out',
+            })
+          },
+          markers: { startColor: 'green', endColor: 'green', fontSize: '12px' },
+        },
+      })
+
+      gsap.fromTo(
+        departmentRef.current,
+        {
+          scale: 1, // شروع انیمیشن دوم از همان مقیاس نهایی انیمیشن اول
+          delay: 0,
+        },
+        {
+          // مقادیر نهایی
+          scale: 0.78,
+          delay: 0,
+          zIndex: 9,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: desktopRef.current,
+            start: '1000px',
+            end: '2000px',
+            scrub: 0.7,
+            markers: { startColor: 'red', endColor: 'red', fontSize: '16px' },
+            toggleActions: 'play none none reverse',
+            onEnter: () => {
+              departmentRef.current.style.display = 'block'
+              gsap.fromTo(
+                departmentRef.current,
+                {
+                  duration: 0.12,
+                  opacity: 0,
+                  ease: 'power3.in',
+                  scale: 1.15,
+                },
+                {
+                  duration: 0.12,
+                  opacity: 1,
+                  ease: 'power3.in',
+                  scale: 1,
+                }
+              )
+            },
+            onLeaveBack: () => {
+              setTimeout(() => {
+                departmentRef.current.style.display = 'none'
+              }, 470) // این مقدار را می‌توانید برای تاخیر بیشتر یا کمتر تنظیم کنید
+
+              gsap.to(departmentRef.current, {
+                duration: 0.2,
+                opacity: 0,
+                ease: 'power3.out',
+                scale: 1.5,
+              })
+              // با یک تاخیر کوتاه display را به none تغییر می‌دهیم
+            },
+            onLeave: () => {
+              departmentRef.current.style.display = 'block'
+            },
+          },
+        }
+      )
     }
   }, [])
 
@@ -93,20 +143,31 @@ export default function Desktop() {
 
   return (
     <div className={styles.page} ref={desktopRef}>
-      <div ref={appOnDesktopRef} className={styles.appOnDesktop}>
-        <AppOnDesktop className={styles.appIcon} />
+      <DesktopBackground />
+      <div className={styles.appOnDesktop} ref={appOnDesktopRef}>
+        <AppOnDesktop className={styles.appIcon}  />
       </div>
+
       <div className={styles.figma} />
       <div className={styles.desktopModulesContainer}>
+        <Rideman1 className={styles.rideman1} />
+        <Rideman2 className={styles.rideman2} />
+        <Image className={styles.human1} src={"/h1.png"} width={1000} height={1000} alt={""} />
+        <Image className={styles.human2} src={"/h2.png"} width={1000} height={1000} alt={""} />
+        <NavigationBar />
+        {/* <Navigation /> */}
         <WindowControlButtons />
         <HeightControl />
         <Stats />
         <People />
+        <div className={styles.departmentContainer} ref={departmentRef}>
+          <Departments className={styles.department} />
+        </div>
         <TaskBar />
       </div>
 
       <div onClick={showCustomToast} className={styles.sss}>
-        sssssssssssssssssssssssss
+        تست عملکرد پاپ اپ
       </div>
 
       {/* <Navigation /> */}

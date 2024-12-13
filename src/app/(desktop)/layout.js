@@ -35,7 +35,6 @@ export default function RootLayout({ children }) {
           <DesktopBackground />
           <Desktop />
           {children}
-          {/* کامپوننت Desktop باید در مسیر app/desktop/[desktopId]/page.js فراخوانی شود */}
           <ToastContainer
             position="bottom-left"
             autoClose={3000}
@@ -56,11 +55,10 @@ export default function RootLayout({ children }) {
             bodyClassName="toast3"
             progressClassName="toast4"
             closeButton={false}
-
             // stacked
           />
           {/* <LoadingPage /> */}
-          <MainLoader />
+          {/* <MainLoader /> */}
         </CursorProvider>
       </body>
     </html>

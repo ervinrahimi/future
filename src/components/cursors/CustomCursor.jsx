@@ -2,6 +2,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import styles from './CustomCursor.module.css';
 import { useCursor } from './CursorContext';
 
@@ -13,6 +14,9 @@ const CustomCursor = ({ followSpeed = 0.03 }) => {
   const [isVisible, setIsVisible] = useState(true); // برای مدیریت نمایش ماوس هنگام خروج از پنجره
 
   useEffect(() => {
+    if (typeof window === 'undefined') {
+      return; // مطمئن می‌شویم که این کد فقط در سمت کلاینت اجرا می‌شود
+    }
     let mouseX = 0, mouseY = 0;
 
     const handleMouseMove = (event) => {
@@ -29,7 +33,7 @@ const CustomCursor = ({ followSpeed = 0.03 }) => {
 
     const animate = () => {
       setPosition((prevPos) => {
-        const newX = prevPos.x + (mouseX - prevPos.x - 8.4) * followSpeed ;
+        const newX = prevPos.x + (mouseX - prevPos.x - 8.4) * followSpeed;
         const newY = prevPos.y + (mouseY - prevPos.y - 8.4) * followSpeed;
         return { x: newX, y: newY };
       });
@@ -68,3 +72,8 @@ const CustomCursor = ({ followSpeed = 0.03 }) => {
 };
 
 export default CustomCursor;
+
+// داینامیک کردن CustomCursor
+const CustomCursorDynamic = dynamic(() => Promise.resolve(CustomCursor), { ssr: false });
+
+export { CustomCursorDynamic };

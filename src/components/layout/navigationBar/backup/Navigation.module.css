@@ -103,7 +103,7 @@
 }
 
 .selectedItemContent {
-  mask: url(../../../../public/desktop/masks/navigation-selected-item.svg);
+  /* mask: url(../../../../public/desktop/masks/navigation-selected-item.svg); */
   mask-size: 100%;
   mask-repeat: no-repeat;
   mask-position: center;

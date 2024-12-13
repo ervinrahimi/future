@@ -70,7 +70,7 @@ export default function Stats() {
             <div className={styles.content}>
               <SampleIcon className={styles.icon} />
               <div>
-                <span className={styles.statsTitle}>هوش</span>
+                <span className={styles.statsTitle}>درامد</span>
                 <span className={styles.statsData}>بدون اطلاعات</span>
               </div>
             </div>
@@ -79,7 +79,7 @@ export default function Stats() {
             <div className={styles.content}>
               <SampleIcon className={styles.icon} />
               <div>
-                <span className={styles.statsTitle}>هوش</span>
+                <span className={styles.statsTitle}>وظایف</span>
                 <span className={styles.statsData}>بدون اطلاعات</span>
               </div>
             </div>
@@ -88,7 +88,7 @@ export default function Stats() {
             <div className={styles.content}>
               <SampleIcon className={styles.icon} />
               <div>
-                <span className={styles.statsTitle}>هوش</span>
+                <span className={styles.statsTitle}>اخبار</span>
                 <span className={styles.statsData}>بدون اطلاعات</span>
               </div>
             </div>
@@ -97,7 +97,7 @@ export default function Stats() {
             <div className={styles.content}>
               <SampleIcon className={styles.icon} />
               <div>
-                <span className={styles.statsTitle}>هوش</span>
+                <span className={styles.statsTitle}>تعداد دوستان</span>
                 <span className={styles.statsData}>بدون اطلاعات</span>
               </div>
             </div>
@@ -106,7 +106,7 @@ export default function Stats() {
             <div className={styles.content}>
               <SampleIcon className={styles.icon} />
               <div>
-                <span className={styles.statsTitle}>هوش</span>
+                <span className={styles.statsTitle}>پیشبینی</span>
                 <span className={styles.statsData}>بدون اطلاعات</span>
               </div>
             </div>
@@ -115,7 +115,7 @@ export default function Stats() {
             <div className={styles.content}>
               <SampleIcon className={styles.icon} />
               <div>
-                <span className={styles.statsTitle}>هوش</span>
+                <span className={styles.statsTitle}>ماموریت ها</span>
                 <span className={styles.statsData}>بدون اطلاعات</span>
               </div>
             </div>
@@ -124,7 +124,7 @@ export default function Stats() {
             <div className={styles.content}>
               <SampleIcon className={styles.icon} />
               <div>
-                <span className={styles.statsTitle}>هوش</span>
+                <span className={styles.statsTitle}>انرژی</span>
                 <span className={styles.statsData}>بدون اطلاعات</span>
               </div>
             </div>
@@ -134,7 +134,7 @@ export default function Stats() {
             <div className={styles.content}>
               <SampleIcon className={styles.icon} />
               <div>
-                <span className={styles.statsTitle}>هوش</span>
+                <span className={styles.statsTitle}>سلامتی</span>
                 <span className={styles.statsData}>بدون اطلاعات</span>
               </div>
             </div>
@@ -144,7 +144,7 @@ export default function Stats() {
             <div className={styles.content}>
               <SampleIcon className={styles.icon} />
               <div>
-                <span className={styles.statsTitle}>هوش</span>
+                <span className={styles.statsTitle}>دوستان</span>
                 <span className={styles.statsData}>بدون اطلاعات</span>
               </div>
             </div>

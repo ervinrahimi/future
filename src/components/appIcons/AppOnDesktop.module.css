@@ -53,26 +53,9 @@
   fill: #ffffff;
 } */
 
-.appContainer::before {
-  content: ' ';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 0, 0, 0);
-  z-index: -1;
-  pointer-events: none;
-}
 
-.appContainer:hover:before {
-  background-color: rgb(255, 0, 0);
-  pointer-events: all;
-  width: 150%;
-  height: 150%;
-}
 
+/* استایل‌ها در هنگام درگ */
 .dragActive .nodeContainerIcon g path {
   fill-opacity: 1;
   fill: #141228;
@@ -82,6 +65,24 @@
   fill-opacity: 0.2;
   fill: #ffffff;
 }
+
+/* غیرفعال کردن استایل هاور برای آیتم‌هایی که در حال درگ نیستند */
+.noHover:hover {
+  pointer-events: none;
+}
+
+/* استایل هاور فقط وقتی که درگ فعال نیست */
+.appContainer:hover:not(.noHover) .nodeContainerIcon g path {
+  fill-opacity: 1;
+  fill: #141228;
+}
+
+.appContainer:hover:not(.noHover) .appContainerIcon path {
+  fill-opacity: 0.2;
+  fill: #ffffff;
+}
+
+
 
 .nodeContainerIcon {
   position: absolute;

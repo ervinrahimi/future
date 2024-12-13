@@ -2,20 +2,15 @@
 import React from 'react'
 import useHoverCursor from '@/components/cursors/useHoverCursor'
 import styles from './AppBackground.module.css'
-import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 export default function AppBackground() {
-  const router = useRouter()
-  // تابع هندل کلیک برای هدایت به صفحه اصلی
-  const handleClick = () => {
-    router.push('/', {scroll: false})
-  }
   const { handleMouseEnter, handleMouseLeave, handleMouseClick } = useHoverCursor('back', 200)
   return (
-    <section
-      onClick={() => {handleClick(), handleMouseClick()}}
+    <Link
+      href="/"
       className={styles.layoutContainer}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-    />
+    ></Link>
   )
 }

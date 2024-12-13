@@ -1,11 +1,12 @@
 .page {
   position: relative;
   width: 100%;
-  height: 2000px;
+  height: 2500px;
   z-index: 9;
   background-color: transparent;
   overflow: scroll;
-  background: linear-gradient(180deg, rgb(190, 189, 203) 0%, rgb(106, 132, 148) 100%);
+  /* background: linear-gradient(180deg, rgb(190, 189, 203) 0%, rgb(106, 132, 148) 100%); */
+  background: linear-gradient(180deg, rgb(89, 80, 222) 0%, rgb(150, 12, 108) 100%);
 }
 
 .appOnDesktop {
@@ -18,17 +19,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(11, 21, 23);
+  /* background-color: rgb(11, 21, 23); */
+  background-color: transparent;
   z-index: 3;
   gap: 5px;
-  /* pointer-events: none; */
-}
-
-/* .appIcon{
-} */
-
-.appIcon2{
-  margin-top: -40px;
 }
 
 .desktopModulesContainer {
@@ -37,15 +31,29 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 9;
   background-color: transparent;
   overflow: hidden;
   z-index: 4;
   pointer-events: none;
+  transition: all 0s;
+  transition-delay: 0;
+}
+
+.departmentContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  z-index: -1;
+  pointer-events: none;
+  display: none;
+  opacity: 0;
+  transition: all 0.2s;
 }
 
 .figma {
-  position: absolute;
+  position: fixed;
   display: block;
   top: 0;
   left: 0;
@@ -55,6 +63,7 @@
   background-size: 100%;
   background-position: bottom;
   background-repeat: no-repeat;
+  /* z-index: 0; */
   z-index: 0;
   /* display: none; */
   pointer-events: none;
@@ -73,4 +82,51 @@
 .sss {
   z-index: 99999999;
   position: absolute;
+  padding: 10px 10px;
+  background-color: rgb(162, 162, 183);
+  border-radius: 10px;
+  font-size: 13px;
+  color: white;
+  top: 200px;
+  left: 10px;
+}
+
+.rideman1,
+.rideman2 {
+  position: absolute;
+  bottom: 45px;
+  left: 0;
+  pointer-events: all;
+}
+
+.rideman2 {
+  left: unset;
+  right: 0;
+}
+
+.rideman1:hover path,
+.rideman2:hover path {
+  fill: #4e5672;
+}
+
+.human1,
+.human2 {
+  position: absolute;
+  pointer-events: all;
+  right: 43px;
+  bottom: 83px;
+  width: 160px;
+  height: 403px;
+  object-fit: contain;
+}
+
+.human2 {
+  right: unset;
+  left: 80px;
+}
+
+.human1:hover,
+.human2:hover {
+  filter: brightness(0.8);
+  opacity: 0.7;
 }
