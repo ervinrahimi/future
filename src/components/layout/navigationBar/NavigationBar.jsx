@@ -83,6 +83,9 @@ export default function NavigationBar() {
           <div className={styles.selectedItemContent}>
             <Image src={'/buildings/soltani-zade/logo.jpg'} width={250} height={250} alt="null" />
           </div>
+          <div className={styles.centerButtonContainer}>
+            
+          </div>
           {/* <NavigationSelectedItem className={styles.selectedFrame} /> */}
         </div>
       </div>

@@ -122,3 +122,12 @@
   border-radius: 20px;
   box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.3);
 }
+
+.centerButtonContainer {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  background-color: #00383A;
+}

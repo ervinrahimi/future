@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Image from 'next/image'
@@ -20,6 +20,7 @@ import Departments from '@/components/departments/Departments'
 import DesktopBackground from '../background/DesktopBackground'
 import NavigationBar from '../navigationBar/NavigationBar'
 import { Rideman1, Rideman2 } from '@/assets/svgs/rideman/rideman'
+import Widgets from '../widgets/Widgets'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -27,7 +28,10 @@ export default function Desktop() {
   // useScrollToTopOnRouteChange()
   const appOnDesktopRef = useRef(null)
   const desktopRef = useRef(null)
+  const moveRef = useRef(null)
   const departmentRef = useRef(null)
+
+  const [isMoved, setIsMoved] = useState(false) // State برای پیگیری وضعیت جابجایی دسکتاپ
 
   const showCustomToast = () => {
     toast(<CustomNotification title="نوتیفیکیشن" message="این یک پیام ساده است." />, {
@@ -45,9 +49,9 @@ export default function Desktop() {
       // انیمیشن اول با اسکرول
       gsap.to(appOnDesktopRef.current, {
         duration: 0.3,
-        scale: 0.7,
+        scale: 0.8,
         opacity: 1,
-        ease: 'power3.in',
+        ease: 'power3.out',
         scrollTrigger: {
           trigger: desktopRef.current,
           start: '0',
@@ -60,7 +64,7 @@ export default function Desktop() {
       // اضافه کردن یک مقدار تاخیری کوچک برای رفع پرش
       gsap.to(appOnDesktopRef.current, {
         duration: 0.1, // مدت زمان کوتاه برای انتقال نرم‌تر
-        scale: 0.7, // شروع انیمیشن دوم از همان مقیاس نهایی انیمیشن اول
+        scale: 0.8, // شروع انیمیشن دوم از همان مقیاس نهایی انیمیشن اول
         opacity: 1,
         scrollTrigger: {
           trigger: desktopRef.current,
@@ -141,20 +145,40 @@ export default function Desktop() {
   //   toast('hi')
   // }
 
+  const moveDesktop = (direction) => {
+    const targetPosition = isMoved ? '0px' : direction === 'left' ? '-200px' : '200px'
+    const targetBlur = isMoved ? 'blur(0px)' : direction === 'left' ? 'blur(0px)' : 'blur(4px)'
+    gsap.to(moveRef.current, {
+      duration: 0.5,
+      x: targetPosition,
+      filter: targetBlur,
+      ease: 'power2.out',
+    })
+    setIsMoved(!isMoved) // تغییر وضعیت جابجایی پس از هر کلیک
+  }
+
+  const handleRidemanClick = (direction) => {
+    moveDesktop(direction)
+    console.log('hi')
+  }
+
   return (
-    <div className={styles.page} ref={desktopRef}>
+    <div className={styles.container} ref={desktopRef}>
       <DesktopBackground />
-      <div className={styles.appOnDesktop} ref={appOnDesktopRef}>
-        <AppOnDesktop className={styles.appIcon}  />
+      <div className={styles.moveButtonsContainer}>
+        <Rideman1 className={styles.rideman1} onClick={() => handleRidemanClick('right')} />
+        <Rideman2 className={styles.rideman2} onClick={() => handleRidemanClick('left')} />
       </div>
 
-      <div className={styles.figma} />
-      <div className={styles.desktopModulesContainer}>
-        <Rideman1 className={styles.rideman1} />
-        <Rideman2 className={styles.rideman2} />
-        <Image className={styles.human1} src={"/h1.png"} width={1000} height={1000} alt={""} />
-        <Image className={styles.human2} src={"/h2.png"} width={1000} height={1000} alt={""} />
+      {/* <div className={styles.figma} /> */}
+      <div className={styles.desktopModulesContainer} ref={moveRef}>
+        <div className={styles.appOnDesktop} ref={appOnDesktopRef}>
+          <AppOnDesktop className={styles.appIcon} />
+        </div>
+        <Image className={styles.human1} src={'/h1.png'} width={1000} height={1000} alt={''} />
+        <Image className={styles.human2} src={'/h2.png'} width={1000} height={1000} alt={''} />
         <NavigationBar />
+        <Widgets />
         {/* <Navigation /> */}
         <WindowControlButtons />
         <HeightControl />
@@ -167,7 +191,7 @@ export default function Desktop() {
       </div>
 
       <div onClick={showCustomToast} className={styles.sss}>
-        تست عملکرد پاپ اپ
+        پاپ اپ
       </div>
 
       {/* <Navigation /> */}

@@ -1,9 +1,10 @@
 import React from 'react'
 
-export const Rideman1 = ({ className }) => {
+export const Rideman1 = ({ className, onClick }) => {
   return (
     <svg
       className={className}
+      onClick={onClick}
       width="25"
       height="140"
       viewBox="0 0 25 140"
@@ -24,10 +25,11 @@ export const Rideman1 = ({ className }) => {
   )
 }
 
-export const Rideman2 = ({ className }) => {
+export const Rideman2 = ({ className, onClick }) => {
   return (
     <svg
       className={className}
+      onClick={onClick}
       width="25"
       height="140"
       viewBox="0 0 25 140"

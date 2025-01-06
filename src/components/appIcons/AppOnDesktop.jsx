@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import styles from './AppOnDesktop.module.css'
 import { NodeDesktopContainer, AppDesktopIcon } from '@/assets/svgs/appDesktop/appDesktop'
+import { SampleIcon } from '@/assets/icons/main/statsBar'
 
 // کامپوننت اصلی به عنوان کامپوننت داینامیک با ssr غیرفعال
 const AppOnDesktop = dynamic(() => Promise.resolve(MainComponent), { ssr: false })
@@ -46,12 +47,16 @@ const DraggableItem = ({
           >
             <NodeDesktopContainer className={styles.nodeContainerIcon} />
             <AppDesktopIcon className={styles.appContainerIcon} />
+            <SampleIcon className={styles.icon} />
+            <div className={styles.appTitle}>فروش</div>
           </div>
         </Link>
       ) : (
         <div className={`${styles.appContainer} ${isDragActive ? styles.dragActiveContainer : ''}`}>
           <NodeDesktopContainer className={styles.nodeContainerIcon} />
           <AppDesktopIcon className={styles.appContainerIcon} />
+          <SampleIcon className={styles.icon} />
+          <div className={styles.appTitle}>فروش</div>
         </div>
       )}
     </div>

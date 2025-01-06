@@ -177,7 +177,7 @@ export default function Window() {
     <div className={styles.container}>
       <div className={styles.appWindowControl}>ss</div>
 
-      <AppWindow className={styles.windowSvgStyle} />
+      {/* <AppWindow className={styles.windowSvgStyle} /> */}
 
       <div className={`${styles.rightSideBar} ${styles.sideBar}`}>
         <RightSideBar className={styles.mainSideLine} />
